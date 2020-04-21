@@ -72,11 +72,14 @@ WSGI_APPLICATION = 'lca_website.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# The mysql config can be loaded from env 
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lca_website',
+        'USER': 'root',
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD'),
     }
 }
 
