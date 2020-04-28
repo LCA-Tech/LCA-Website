@@ -1,21 +1,21 @@
 from django.db import models
 
+TYPE_ZERO_NGO = 0
+TYPE_ONE_NGO = 1
+
+NGO_CATEGORY = (
+    (TYPE_ZERO_NGO, "Zero"),
+    (TYPE_ONE_NGO, "One"),
+)
+
 
 class ngo(models.Model):
     """
     A model to represent an NGO. The Registration number of the NGO is used as the primary key in the database. 
     Since the category is chosen from a set of categories, it is made into an enum and stored as an integer.
-    The website is made an optional field.   
-    
+    The website is made an optional field.
+    The NGO is unapproved when added and has to be approved by the administrators.
     """
-
-    TYPE_ZERO_NGO = 0
-    TYPE_ONE_NGO = 1
-
-    NGO_CATEGORY = (
-        (TYPE_ZERO_NGO, "Zero"),
-        (TYPE_ONE_NGO, "One"),
-    )
 
     name = models.CharField(max_length=100)
     reg_number = models.CharField(max_length=25, primary_key=True)
@@ -24,3 +24,4 @@ class ngo(models.Model):
     contact_number = models.CharField(max_length=10)
     email_address = models.CharField(max_length=255)
     website = models.CharField(max_length=75, null=True)
+    approved = models.BooleanField(default=False)

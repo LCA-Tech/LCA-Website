@@ -1,12 +1,9 @@
 from django import forms
 from django.core.validators import validate_email, URLValidator
+from .models import NGO_CATEGORY
 
 
 class SignupForm(forms.ModelForm):
-    NGO_CATEGORY = (
-        (0, "Zero"),
-        (1, "One"),
-    )
     name = forms.CharField(label="Name of the NGO", max_length=100)
     registration_number = forms.CharField(
         label="Registration number of the NGO", max_length=25

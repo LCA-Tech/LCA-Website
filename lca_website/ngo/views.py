@@ -2,8 +2,6 @@ from django.shortcuts import render, HttpResponseRedirect
 from .forms import SignupForm
 from .models import ngo
 
-# Create your views here.
-
 
 def ngo_signup(request):
     if request.method == "POST":
