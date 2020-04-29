@@ -115,4 +115,3 @@ venv/
 env/
 .venv 
 .env
-migrations/

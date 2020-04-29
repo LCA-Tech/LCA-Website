@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import SignupForm
-from .models import ngo
+from .models import Ngo
 
 
 def ngo_signup(request):
@@ -14,7 +14,7 @@ def ngo_signup(request):
             contact_number = form.cleaned_data["contact_number"]
             email_address = form.cleaned_data["email_address"]
             website = form.cleaned_data["website"]
-            NGO = ngo(
+            ngo = Ngo(
                 name=ngo_name,
                 reg_number=reg_number,
                 category=category,
@@ -23,13 +23,13 @@ def ngo_signup(request):
                 email_address=email_address,
                 website=website,
             )
-            NGO.save()
+            ngo.save()
             template_data = {}
             template_data["alert_success"] = "NGO registration awating approval"
             return render(request, "index.html", template_data)
         else:
             template_data = {}
-            template_data["alert_danger"] = "Invalid details provided"
+            template_data["errors"] = form.errors
             return HttpResponseRedirect("/ngo/signup")
     else:
         return render(request, "ngo_signup.html")

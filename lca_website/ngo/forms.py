@@ -1,6 +1,6 @@
 from django import forms
 from django.core.validators import validate_email, URLValidator
-from .models import NGO_CATEGORY
+from .models import NgoCategories
 
 
 class SignupForm(forms.ModelForm):
@@ -9,7 +9,7 @@ class SignupForm(forms.ModelForm):
         label="Registration number of the NGO", max_length=25
     )
     category = forms.ChoiceField(
-        label="Category to which the NGO belongs", choices=NGO_CATEGORY
+        label="Category to which the NGO belongs", choices=NgoCategories.choices()
     )
     address = forms.CharField(label="Address of the NGO", max_length=255)
     contact_number = forms.CharField(
