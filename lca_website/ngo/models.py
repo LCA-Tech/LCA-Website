@@ -19,8 +19,8 @@ class Ngo(models.Model):
     The NGO is unapproved when added and has to be approved by the administrators.
     """
 
-    name = models.CharField(max_length=100)
-    reg_number = models.CharField(max_length=25, primary_key=True)
+    name = models.CharField(max_length=100, primary_key=True)
+    reg_number = models.CharField(max_length=25, null=True)
     category = models.IntegerField(default=0, choices=NgoCategories.choices())
     address = models.CharField(max_length=255)
     contact_number = models.CharField(max_length=10)
