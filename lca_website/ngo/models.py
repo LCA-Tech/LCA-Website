@@ -13,13 +13,9 @@ class NgoCategories(IntEnum):
 
 class Ngo(models.Model):
     """
-    A model to represent an NGO. The Registration number of the NGO is used as the primary key in the database.
-    Since the category is chosen from a set of categories, it is made into an enum and stored as an integer.
-    The website is made an optional field.
-    The NGO is unapproved when added and has to be approved by the administrators.
     """
 
-    name = models.CharField(max_length=100, primary_key=True)
+    name = models.CharField(max_length=100)
     reg_number = models.CharField(max_length=25, null=True)
     category = models.IntegerField(default=0, choices=NgoCategories.choices())
     address = models.CharField(max_length=255)
