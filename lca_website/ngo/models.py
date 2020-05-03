@@ -23,3 +23,7 @@ class Ngo(models.Model):
     email_address = models.CharField(max_length=255)
     website = models.CharField(max_length=75, null=True)
     approved = models.BooleanField(default=False)
+    description = models.CharField(max_length=255, null=True)
+
+    def __str__(self):
+            return self.name
