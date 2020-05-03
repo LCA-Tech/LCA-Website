@@ -20,5 +20,5 @@ from ngo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r"^", include("ngo.urls", namespace="ngo")),
+    path('ngo/', include('ngo.urls', namespace='ngo')),
 ]
