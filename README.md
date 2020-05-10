@@ -10,6 +10,12 @@ $ pip install virtualenv
 Refer to [this](https://virtualenv.pypa.io/en/latest/installation.html) in case you face troubles installing virtualenv
 
 - Create and activate a virtual environment:
+a) Windows:
+```bash
+$ virtualenv venv
+$ venv\Scripts\activate
+```
+b) Linux or Mac:
 ```bash 
 $ virtualenv venv && source ./venv/bin/activate
 ```
