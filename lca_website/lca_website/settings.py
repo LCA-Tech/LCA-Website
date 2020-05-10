@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ngo.apps.NgoConfig',
+    'program.apps.ProgramConfig'
 ]
 
 MIDDLEWARE = [
