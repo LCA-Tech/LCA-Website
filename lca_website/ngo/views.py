@@ -3,7 +3,7 @@ from .forms import SignupForm
 from .models import Ngo
 
 
-def ngo_signup(request):
+def signup(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -32,4 +32,4 @@ def ngo_signup(request):
             template_data["errors"] = form.errors
             return HttpResponseRedirect("/ngo/signup")
     else:
-        return render(request, "ngo_signup.html")
+        return render(request, "ngo/signup.html")
