@@ -1,6 +1,37 @@
 from django.shortcuts import render, HttpResponseRedirect
+from django.http import *
 from .forms import SignupForm
 from .models import Ngo
+from django.template import loader
+
+
+def homepage(request, *args, **kwargs):
+    print(args,kwargs)
+    print(request.user)
+    response = "The links in this page redirects you to the respective ngo pages"
+    print (response)
+    k = Ngo.objects.order_by('name')
+    template = loader.get_template('ngo/index.html')
+    context = {
+        'k': k,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def detail(request, name):
+    response = "These are NGO details "
+    print(response)
+    try:
+        k = Ngo.objects.get(pk=name)
+    except Ngo.DoesNotExist:
+        raise Http404("NGO does not exist")
+    return render(request, 'ngo/detail.html', {'name' : k})
+
+
+def results(request, name):
+    response = "You're looking at the results of ngo %s."
+    print(response)
+    return HttpResponse(response % name)
 
 
 def ngo_signup(request):
