@@ -1,0 +1,16 @@
+<h2>NGO' s</h2>
+{% if k %}
+    <ul>
+    {% for name in k %}
+        <li><a href="/{{name.name}}/">{{ name.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No ngo' s are available.</p>
+{% endif %}
+
+<footer>
+
+<p><a href="http://127.0.0.1:8000/admin/">Click here</a> to go to admin page</p>
+
+    </footer>
