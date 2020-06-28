@@ -1,0 +1,9 @@
+{% if ngo %}
+    <h1>{{ ngo.name }}</h1>
+    <h1>{{ ngo.address }}</h1>
+    <h1>{{ ngo.contact_number }}</h1>
+    <h1>{{ ngo.website }}</h1>
+    <h1>{{ ngo.description }}</h1>
+{% else %}
+    <h1>How did you end up here?</h1>
+{% endif %}
