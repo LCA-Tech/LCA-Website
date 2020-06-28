@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
+from django.db.models import Q
+from django.views.generic import ListView, DetailView
 from .forms import SignupForm
 from .models import Ngo
 
@@ -33,3 +35,15 @@ def signup(request):
             return HttpResponseRedirect("/ngo/signup")
     else:
         return render(request, "ngo/signup.html")
+
+class NgoListView(ListView):
+    model = Ngo
+    queryset = Ngo.objects.filter(Q(approved=True)).values("id", "name")
+    context_object_name = "ngo_list"
+    template_name = "ngo_list.html"
+
+
+class NgoDetailView(DetailView):
+    model = Ngo
+    queryset = Ngo.objects.filter(Q(approved=True))
+    template_name = "ngo/view.html"
